@@ -1,0 +1,23 @@
+type User {
+  id: ID! @id
+  name: String
+  first_name: String!
+  last_name: String!
+  # user_friends: []  friends edge on the User node
+  # user_likes: []
+  # user_link: [] Profile URL of User of your app
+  email: String! @unique
+  password: String
+  image: Image @relation(name: "Image", link: INLINE)
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Image {
+  id: ID! @id
+  url: String!
+  large_url: String
+  user: User @relation(name: "User", link: INLINE)
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
